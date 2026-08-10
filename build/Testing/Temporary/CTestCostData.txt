@@ -1,0 +1,6 @@
+RollingVwap full window 0 0
+RollingVwap rejects zero window 1 0.00300358
+RunningExtremes tracks session high and low 0 0
+---
+RollingVwap full window
+RunningExtremes tracks session high and low

@@ -1,0 +1,95 @@
+Start testing: Aug 10 11:04 KST
+----------------------------------------------------------
+1/3 Testing: RollingVwap full window
+1/3 Test: RollingVwap full window
+Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RollingVwap full window"
+Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
+"RollingVwap full window" start time: Aug 10 11:04 KST
+Output:
+----------------------------------------------------------
+Filters: "RollingVwap full window"
+Randomness seeded to: 3842327996
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ob_tests is a Catch2 v3.5.2 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+RollingVwap full window
+-------------------------------------------------------------------------------
+/Users/minhyukbhang/Desktop/orderbook-cpp/tests/test_vwap.cpp:17
+...............................................................................
+
+/Users/minhyukbhang/Desktop/orderbook-cpp/tests/test_vwap.cpp:17: FAILED:
+due to unexpected exception with message:
+  RollingVwap::push not implemented
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"RollingVwap full window" end time: Aug 10 11:04 KST
+"RollingVwap full window" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/3 Testing: RollingVwap rejects zero window
+2/3 Test: RollingVwap rejects zero window
+Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RollingVwap rejects zero window"
+Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
+"RollingVwap rejects zero window" start time: Aug 10 11:04 KST
+Output:
+----------------------------------------------------------
+Filters: "RollingVwap rejects zero window"
+Randomness seeded to: 1961580309
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"RollingVwap rejects zero window" end time: Aug 10 11:04 KST
+"RollingVwap rejects zero window" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/3 Testing: RunningExtremes tracks session high and low
+3/3 Test: RunningExtremes tracks session high and low
+Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RunningExtremes tracks session high and low"
+Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
+"RunningExtremes tracks session high and low" start time: Aug 10 11:04 KST
+Output:
+----------------------------------------------------------
+Filters: "RunningExtremes tracks session high and low"
+Randomness seeded to: 3768824644
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ob_tests is a Catch2 v3.5.2 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+RunningExtremes tracks session high and low
+-------------------------------------------------------------------------------
+/Users/minhyukbhang/Desktop/orderbook-cpp/tests/test_extremes.cpp:8
+...............................................................................
+
+/Users/minhyukbhang/Desktop/orderbook-cpp/tests/test_extremes.cpp:8: FAILED:
+due to unexpected exception with message:
+  RunningExtremes::push not implemented
+
+===============================================================================
+test cases: 1 | 1 failed
+assertions: 1 | 1 failed
+
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Failed.
+"RunningExtremes tracks session high and low" end time: Aug 10 11:04 KST
+"RunningExtremes tracks session high and low" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Aug 10 11:04 KST

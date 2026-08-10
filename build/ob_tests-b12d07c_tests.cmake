@@ -1,0 +1,7 @@
+add_test( [==[RollingVwap full window]==] /Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests [==[RollingVwap full window]==]  )
+set_tests_properties( [==[RollingVwap full window]==] PROPERTIES WORKING_DIRECTORY /Users/minhyukbhang/Desktop/orderbook-cpp/build)
+add_test( [==[RollingVwap rejects zero window]==] /Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests [==[RollingVwap rejects zero window]==]  )
+set_tests_properties( [==[RollingVwap rejects zero window]==] PROPERTIES WORKING_DIRECTORY /Users/minhyukbhang/Desktop/orderbook-cpp/build)
+add_test( [==[RunningExtremes tracks session high and low]==] /Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests [==[RunningExtremes tracks session high and low]==]  )
+set_tests_properties( [==[RunningExtremes tracks session high and low]==] PROPERTIES WORKING_DIRECTORY /Users/minhyukbhang/Desktop/orderbook-cpp/build)
+set( ob_tests_TESTS [==[RollingVwap full window]==] [==[RollingVwap rejects zero window]==] [==[RunningExtremes tracks session high and low]==])
