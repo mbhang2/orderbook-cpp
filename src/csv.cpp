@@ -31,9 +31,6 @@ std::optional<double> ParseDoubleAndSanityCheck(const char* ptr, char** end, con
 
 
 ReadResult readBars(const std::filesystem::path& path) {
-    // TODO(rung-1 day 2): std::ifstream, read line by line, std::from_chars.
-    // Reserve the vector once you know roughly how many rows -- measure the
-    // difference reserving makes, it is your first benchmark of the project.
     std::ifstream file(path);
     if (!file.is_open()) {throw std::runtime_error("Error opening file!");}
     size_t estimate_size = std::filesystem::file_size(path) / 60;
