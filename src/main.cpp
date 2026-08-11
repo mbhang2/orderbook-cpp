@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     const std::size_t window = (argc > 3) ? std::stoul(argv[3]) : 20;
 
     try {
-        const auto bars = ob::readBars(argv[1]);
+        const auto [bars, result] = ob::readBars(argv[1]);
 
         [[maybe_unused]] ob::RollingVwap vwap(window);
         [[maybe_unused]] ob::RunningExtremes extremes;
