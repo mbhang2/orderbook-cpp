@@ -19,8 +19,6 @@ struct ReadResult{
 
 // Read a CSV of bars into memory.
 // Expected header: ts_ns,open,high,low,close,volume
-//
-// Use std::from_chars, not std::stod. Know why before you write it.
 ReadResult readBars(const std::filesystem::path& path);
 
 }  // namespace ob

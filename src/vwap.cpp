@@ -1,5 +1,6 @@
 #include "ob/vwap.hpp"
 
+#include <limits>
 #include <stdexcept>
 
 namespace ob {
@@ -8,19 +9,38 @@ RollingVwap::RollingVwap(std::size_t window) : window_(window) {
     if (window == 0) {
         throw std::invalid_argument("window must be > 0");
     }
-    // TODO(rung-1 day 3): reserve your storage here.
+
+    head_ = 0;
+    count_ = 0;
+
+    cum_volume_ = 0;
+    cum_product_ = 0;
+    underlying_.resize(window);
 }
 
-void RollingVwap::push(double /*price*/, double /*volume*/) {
-    throw std::logic_error("RollingVwap::push not implemented");
+void RollingVwap::push(double price, double volume) {
+    // Retreive what's leaving and insert new
+    auto [leaving_price, leaving_vol] = underlying_.at(head_);
+    underlying_.at(head_) = std::pair<double, double>(price, volume);
+
+    // Update cumulative
+    cum_volume_ = cum_volume_ - leaving_vol + volume;
+    cum_product_ = cum_product_ - leaving_price * leaving_vol + price * volume;
+
+    // Move head accordingly
+    head_ = (head_ + 1) % window_;
+    if (count_ < window_) {count_ += 1;}
 }
 
 double RollingVwap::value() const {
-    throw std::logic_error("RollingVwap::value not implemented");
+    if (ready()) {
+        return cum_product_ / cum_volume_;
+    }
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
 bool RollingVwap::ready() const {
-    throw std::logic_error("RollingVwap::ready not implemented");
+    return count_ == window_;
 }
 
 }  // namespace ob

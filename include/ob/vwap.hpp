@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <vector>
 
 namespace ob {
 
@@ -14,8 +15,6 @@ public:
     // Feed one observation. The oldest drops out once the window is full.
     void push(double price, double volume);
 
-    // Current VWAP. Behaviour before the window fills is YOUR design decision --
-    // document whichever you pick in the README and make the tests match.
     [[nodiscard]] double value() const;
 
     [[nodiscard]] bool ready() const;
@@ -23,8 +22,12 @@ public:
 
 private:
     std::size_t window_;
-    // TODO(rung-1 day 3): choose your storage. Ring buffer? std::deque?
-    // Whatever you pick, push() must be O(1) amortised.
+    std::size_t head_;
+    std::size_t count_;
+
+    double cum_volume_;
+    double cum_product_; 
+    std::vector<std::pair<double, double>> underlying_;
 };
 
 }  // namespace ob

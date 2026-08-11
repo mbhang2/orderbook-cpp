@@ -1,6 +1,7 @@
-RollingVwap full window 0 0
-RollingVwap rejects zero window 1 0.00300358
+RollingVwap full window 2 0.00124306
+RollingVwap rejects zero window 3 0.000699111
 RunningExtremes tracks session high and low 0 0
+Window eviction 1 0.00180637
+Partial window 1 0.00156196
 ---
-RollingVwap full window
 RunningExtremes tracks session high and low

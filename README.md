@@ -52,8 +52,13 @@ data/           sample_bars.csv (200 synthetic NQ-ish bars), gitignored otherwis
 *Fill this in as you go. Two or three sentences each. This section is what gets
 read in an interview, not the code.*
 
-- **Storage for `RollingVwap`:** _(ring buffer vs deque — pick and justify)_
-- **`value()` before the window fills:** _(your policy)_
+- **Storage for `RollingVwap`:** 
+  - rRing buffer over std::vector, sized at construction.
+  - Chose it over std::deque for contiguous memory and a single allocation; deque would have been simpler to write (push_back/pop_front, no index arithmetic and no separate count). At W = 20–50 the difference is likely below measurement noise — untested. 
+  - Revisit if push shows up in a Rung 4 profile.
+- **`value()` before the window fills:**
+  - A partial VWAP is type-identical and magnitude-plausible. After three observations of a fifty-bar window it returns something like 21003.4 — same double, same range as a real value. Nothing at the call site can tell the two apart. 
+  - NaN can't be mistaken for a price, and it propagates: any arithmetic downstream stays NaN, so a consumer that ignores ready() still can't quietly produce a number that looks fine.
 - **Zero-range behaviour in `distanceFrom*`:** _(your policy)_
 
 ## Benchmarks
