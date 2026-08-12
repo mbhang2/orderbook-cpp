@@ -1,14 +1,14 @@
-Start testing: Aug 11 16:00 KST
+Start testing: Aug 12 17:00 KST
 ----------------------------------------------------------
-1/5 Testing: RollingVwap full window
-1/5 Test: RollingVwap full window
+1/8 Testing: RollingVwap full window
+1/8 Test: RollingVwap full window
 Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RollingVwap full window"
 Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
-"RollingVwap full window" start time: Aug 11 16:00 KST
+"RollingVwap full window" start time: Aug 12 17:00 KST
 Output:
 ----------------------------------------------------------
 Filters: "RollingVwap full window"
-Randomness seeded to: 1242285155
+Randomness seeded to: 535677250
 ===============================================================================
 All tests passed (2 assertions in 1 test case)
 
@@ -16,19 +16,19 @@ All tests passed (2 assertions in 1 test case)
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"RollingVwap full window" end time: Aug 11 16:00 KST
+"RollingVwap full window" end time: Aug 12 17:00 KST
 "RollingVwap full window" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/5 Testing: RollingVwap rejects zero window
-2/5 Test: RollingVwap rejects zero window
+2/8 Testing: RollingVwap rejects zero window
+2/8 Test: RollingVwap rejects zero window
 Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RollingVwap rejects zero window"
 Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
-"RollingVwap rejects zero window" start time: Aug 11 16:00 KST
+"RollingVwap rejects zero window" start time: Aug 12 17:00 KST
 Output:
 ----------------------------------------------------------
 Filters: "RollingVwap rejects zero window"
-Randomness seeded to: 2947324680
+Randomness seeded to: 2602085038
 ===============================================================================
 All tests passed (1 assertion in 1 test case)
 
@@ -36,19 +36,19 @@ All tests passed (1 assertion in 1 test case)
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"RollingVwap rejects zero window" end time: Aug 11 16:00 KST
+"RollingVwap rejects zero window" end time: Aug 12 17:00 KST
 "RollingVwap rejects zero window" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/5 Testing: Window eviction
-3/5 Test: Window eviction
+3/8 Testing: Window eviction
+3/8 Test: Window eviction
 Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "Window eviction"
 Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
-"Window eviction" start time: Aug 11 16:00 KST
+"Window eviction" start time: Aug 12 17:00 KST
 Output:
 ----------------------------------------------------------
 Filters: "Window eviction"
-Randomness seeded to: 839406935
+Randomness seeded to: 2752343775
 ===============================================================================
 All tests passed (2 assertions in 1 test case)
 
@@ -56,19 +56,19 @@ All tests passed (2 assertions in 1 test case)
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Window eviction" end time: Aug 11 16:00 KST
+"Window eviction" end time: Aug 12 17:00 KST
 "Window eviction" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-4/5 Testing: Partial window
-4/5 Test: Partial window
+4/8 Testing: Partial window
+4/8 Test: Partial window
 Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "Partial window"
 Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
-"Partial window" start time: Aug 11 16:00 KST
+"Partial window" start time: Aug 12 17:00 KST
 Output:
 ----------------------------------------------------------
 Filters: "Partial window"
-Randomness seeded to: 3279845501
+Randomness seeded to: 1078840637
 ===============================================================================
 All tests passed (2 assertions in 1 test case)
 
@@ -76,44 +76,88 @@ All tests passed (2 assertions in 1 test case)
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"Partial window" end time: Aug 11 16:00 KST
+"Partial window" end time: Aug 12 17:00 KST
 "Partial window" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-5/5 Testing: RunningExtremes tracks session high and low
-5/5 Test: RunningExtremes tracks session high and low
+5/8 Testing: RunningExtremes tracks session high and low
+5/8 Test: RunningExtremes tracks session high and low
 Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RunningExtremes tracks session high and low"
 Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
-"RunningExtremes tracks session high and low" start time: Aug 11 16:00 KST
+"RunningExtremes tracks session high and low" start time: Aug 12 17:00 KST
 Output:
 ----------------------------------------------------------
 Filters: "RunningExtremes tracks session high and low"
-Randomness seeded to: 2877219379
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ob_tests is a Catch2 v3.5.2 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-RunningExtremes tracks session high and low
--------------------------------------------------------------------------------
-/Users/minhyukbhang/Desktop/orderbook-cpp/tests/test_extremes.cpp:8
-...............................................................................
-
-/Users/minhyukbhang/Desktop/orderbook-cpp/tests/test_extremes.cpp:8: FAILED:
-due to unexpected exception with message:
-  RunningExtremes::push not implemented
-
+Randomness seeded to: 3628911818
 ===============================================================================
-test cases: 1 | 1 failed
-assertions: 1 | 1 failed
+All tests passed (2 assertions in 1 test case)
 
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
-Test Failed.
-"RunningExtremes tracks session high and low" end time: Aug 11 16:00 KST
+Test Passed.
+"RunningExtremes tracks session high and low" end time: Aug 12 17:00 KST
 "RunningExtremes tracks session high and low" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Aug 11 16:00 KST
+6/8 Testing: RunningExtremes distanceFrom*
+6/8 Test: RunningExtremes distanceFrom*
+Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RunningExtremes distanceFrom*"
+Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
+"RunningExtremes distanceFrom*" start time: Aug 12 17:00 KST
+Output:
+----------------------------------------------------------
+Filters: "RunningExtremes distanceFrom*"
+Randomness seeded to: 18912954
+===============================================================================
+All tests passed (2 assertions in 1 test case)
+
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"RunningExtremes distanceFrom*" end time: Aug 12 17:00 KST
+"RunningExtremes distanceFrom*" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/8 Testing: RunningExtremes reset clears state
+7/8 Test: RunningExtremes reset clears state
+Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RunningExtremes reset clears state"
+Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
+"RunningExtremes reset clears state" start time: Aug 12 17:00 KST
+Output:
+----------------------------------------------------------
+Filters: "RunningExtremes reset clears state"
+Randomness seeded to: 1029391781
+===============================================================================
+All tests passed (2 assertions in 1 test case)
+
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"RunningExtremes reset clears state" end time: Aug 12 17:00 KST
+"RunningExtremes reset clears state" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/8 Testing: RunningExtremes handling zero range
+8/8 Test: RunningExtremes handling zero range
+Command: "/Users/minhyukbhang/Desktop/orderbook-cpp/build/ob_tests" "RunningExtremes handling zero range"
+Directory: /Users/minhyukbhang/Desktop/orderbook-cpp/build
+"RunningExtremes handling zero range" start time: Aug 12 17:00 KST
+Output:
+----------------------------------------------------------
+Filters: "RunningExtremes handling zero range"
+Randomness seeded to: 1744605800
+===============================================================================
+All tests passed (2 assertions in 1 test case)
+
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"RunningExtremes handling zero range" end time: Aug 12 17:00 KST
+"RunningExtremes handling zero range" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Aug 12 17:00 KST

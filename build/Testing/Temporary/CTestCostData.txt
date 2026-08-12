@@ -1,7 +1,9 @@
-RollingVwap full window 2 0.00124306
-RollingVwap rejects zero window 3 0.000699111
-RunningExtremes tracks session high and low 0 0
-Window eviction 1 0.00180637
-Partial window 1 0.00156196
+RollingVwap full window 3 0.000590778
+RollingVwap rejects zero window 4 0.000620448
+RunningExtremes tracks session high and low 1 0.00144225
+Window eviction 2 0.000728875
+Partial window 2 0.00105038
+RunningExtremes distanceFrom* 1 0.00214913
+RunningExtremes reset clears state 1 0.00173812
+RunningExtremes handling zero range 1 0.00165679
 ---
-RunningExtremes tracks session high and low
