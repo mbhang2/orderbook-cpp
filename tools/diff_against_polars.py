@@ -22,9 +22,44 @@ TOLERANCE = 1e-9
 
 
 def polars_features(bars_csv: Path, window: int) -> pl.DataFrame:
-    """TODO(you): return columns ts_ns, vwap, running_high, running_low,
-    dist_from_high computed the way day_structure.py computes them."""
-    raise NotImplementedError
+    df = pl.read_csv(bars_csv)
+
+    tp = (pl.col("high") + pl.col("low") + pl.col("close")) / 3
+    pv = tp * pl.col("volume")
+
+    df = df.with_columns([
+        pv.alias("_pv"),
+        pl.col("volume").alias("_v"),
+    ])
+
+    df = df.with_columns([
+        (pl.col("_pv").cum_sum() / pl.col("_v").cum_sum()).alias("session_vwap"),
+        (
+            pl.col("_pv").rolling_sum(window_size=window)
+            / pl.col("_v").rolling_sum(window_size=window)
+        ).alias("rolling_vwap"),
+        pl.col("high").cum_max().alias("running_high"),
+        pl.col("low").cum_min().alias("running_low"),
+    ])
+
+    rng = pl.col("running_high") - pl.col("running_low")
+    df = df.with_columns([
+        pl.when(rng == 0)
+        .then(None)
+        .otherwise((pl.col("running_high") - pl.col("close")) / rng)
+        .alias("dist_from_high"),
+    ])
+
+    # C++ writes NaN where a value is undefined; Polars produces null.
+    # Convert so both sides speak the same language.
+    out = df.select([
+        "ts_ns", "session_vwap", "rolling_vwap",
+        "running_high", "running_low", "dist_from_high",
+    ])
+    return out.with_columns([
+        pl.col(c).fill_null(float("nan"))
+        for c in ("session_vwap", "rolling_vwap", "dist_from_high")
+    ])
 
 
 def cpp_features(binary: Path, bars_csv: Path, out_csv: Path, window: int) -> pl.DataFrame:
@@ -32,7 +67,7 @@ def cpp_features(binary: Path, bars_csv: Path, out_csv: Path, window: int) -> pl
         [str(binary), str(bars_csv), str(out_csv), str(window)],
         check=True,
     )
-    return pl.read_csv(out_csv)
+    return pl.read_csv(out_csv, schema_overrides={"rolling_vwap": pl.Float64})
 
 
 def main() -> int:
@@ -52,7 +87,7 @@ def main() -> int:
 
     worst = 0.0
     failed = False
-    for col in ("vwap", "running_high", "running_low", "dist_from_high"):
+    for col in ("session_vwap", "rolling_vwap", "running_high", "running_low", "dist_from_high"):
         diff = (want[col] - got[col]).abs().max()
         worst = max(worst, float(diff))
         status = "ok" if diff <= TOLERANCE else "FAIL"

@@ -12,10 +12,6 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-First run: **the build is clean and 2 of 3 tests fail.** That is correct. The
-headers declare the interface; the bodies throw `std::logic_error`. Your job is
-to turn them green.
-
 ## Layout
 
 ```
@@ -39,7 +35,7 @@ data/           sample_bars.csv (200 synthetic NQ-ish bars), gitignored otherwis
 
 | Day | File | Task |
 |---|---|---|
-| 1 | — | Build green, `ctest` runs, one dummy test passes ✅ *(done — you're here)* |
+| 1 | — | Build green, `ctest` runs, one dummy test passes
 | 2 | `src/csv.cpp` | `readBars` with `std::from_chars` |
 | 3 | `src/vwap.cpp` | `RollingVwap`, plus your two hand-computed tests |
 | 4 | `src/extremes.cpp` | `RunningExtremes`, plus the zero-range policy |
@@ -48,10 +44,6 @@ data/           sample_bars.csv (200 synthetic NQ-ish bars), gitignored otherwis
 | 7 | `README.md` | Write up what you built and what surprised you. Tag `rung-1`. |
 
 ## Design decisions
-
-*Fill this in as you go. Two or three sentences each. This section is what gets
-read in an interview, not the code.*
-
 - **Storage for `RollingVwap`:** 
   - rRing buffer over std::vector, sized at construction.
   - Chose it over std::deque for contiguous memory and a single allocation; deque would have been simpler to write (push_back/pop_front, no index arithmetic and no separate count). At W = 20–50 the difference is likely below measurement noise — untested. 
@@ -59,7 +51,8 @@ read in an interview, not the code.*
 - **`value()` before the window fills:**
   - A partial VWAP is type-identical and magnitude-plausible. After three observations of a fifty-bar window it returns something like 21003.4 — same double, same range as a real value. Nothing at the call site can tell the two apart. 
   - NaN can't be mistaken for a price, and it propagates: any arithmetic downstream stays NaN, so a consumer that ignores ready() still can't quietly produce a number that looks fine.
-- **Zero-range behaviour in `distanceFrom*`:** _(your policy)_
+- **Zero-range behaviour in `distanceFrom*`:**
+  - Similar to `value()`, to prevent division by zero operation, `distanceFrom*` will return NaN if the range is zero.
 
 ## Benchmarks
 

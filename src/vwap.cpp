@@ -43,4 +43,18 @@ bool RollingVwap::ready() const {
     return count_ == window_;
 }
 
+SessionVwap::SessionVwap() {
+    cum_volume_ = 0.0;
+    cum_product_ = 0.0;
+}
+
+void SessionVwap::push(double price, double volume) {
+    cum_volume_ += volume;
+    cum_product_ += price * volume;
+}
+
+double SessionVwap::value() const {
+    return cum_product_ / cum_volume_;
+}
+
 }  // namespace ob

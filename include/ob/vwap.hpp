@@ -30,4 +30,17 @@ private:
     std::vector<std::pair<double, double>> underlying_;
 };
 
+class SessionVwap{
+public:
+    explicit SessionVwap();
+    // Feed one observation. The oldest drops out once the window is full.
+    void push(double price, double volume);
+
+    [[nodiscard]] double value() const;
+
+private:
+    double cum_volume_;
+    double cum_product_;
+};
+
 }  // namespace ob

@@ -3,6 +3,9 @@
 
 #include <cstdio>
 #include <exception>
+#include <fstream>
+#include <iomanip>
+#include <stdexcept>
 #include <string>
 #include <cstddef>
 
@@ -21,16 +24,32 @@ int main(int argc, char** argv) {
     try {
         const auto [bars, result] = ob::readBars(argv[1]);
 
-        [[maybe_unused]] ob::RollingVwap vwap(window);
-        [[maybe_unused]] ob::RunningExtremes extremes;
+        ob::SessionVwap svwap;
+        ob::RollingVwap rvwap(window);
+        ob::RunningExtremes extremes;
 
         // TODO(rung-1 day 5): iterate bars, push into both, write a CSV with
         // columns: ts_ns,vwap,running_high,running_low,dist_from_high
         // Then tools/diff_against_polars.py compares it to the Polars output.
-        std::fprintf(stderr, "read %zu bars, feature loop not written yet\n",
-                     bars.size());
-        std::fprintf(stderr, "output would go to %s\n", argv[2]);
-        return 1;
+        std::ofstream file(argv[2]);
+
+        if (!file.is_open()) {
+            throw std::runtime_error("FATAL: Cannot open file!");
+        }
+
+        file << "ts_ns,session_vwap,rolling_vwap,running_high,running_low,dist_from_high" << "\n"; 
+
+        for (auto [ts_ns, open, high, low, close, volume] : bars) {
+            svwap.push((high + low + close)/3, volume);
+            rvwap.push((high + low + close)/3, volume);
+            extremes.push(high, low);
+            
+            file << std::setprecision(17) << ts_ns << "," << svwap.value() 
+                    << "," << rvwap.value() << "," << extremes.runningHigh() << "," << extremes.runningLow() << "," << extremes.distanceFromHigh(close) << "\n";
+        }
+        file.close();
+
+        return 0;
     } catch (const std::exception& e) {
         std::fprintf(stderr, "error: %s\n", e.what());
         return 1;
